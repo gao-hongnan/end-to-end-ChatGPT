@@ -4,11 +4,12 @@
 │   │   ├── client.py
 │   │   └── fetch_store_train_evaluate.py
 │   ├── __init__.py
+│   └── airflow_dags
+│       ├── test_request.py
+│       └── ...
+├── airflow
+│   ├── airflow.cfg
 │   └── ...
-├── airflow_dags
-│   ├── test_request.py
-│   └── ...
-├── ...
 
 airflow dags trigger dataops # to trigger the dag on cli
 
@@ -44,6 +45,8 @@ echo $(airflow config get-value database sql_alchemy_conn)
 export PYTHONPATH=.
 # Initialize DB (SQLite by default) and will create airflow folder IFF AIRFLOW_HOME is set!
 airflow db init
+
+# airflow db reset # to reset the db
 
 # create airflow dags folder to whereever you want so long airflow points to it
 AIRFLOW_DAGS_FOLDER="$(pwd)/src/airflow_dags"
